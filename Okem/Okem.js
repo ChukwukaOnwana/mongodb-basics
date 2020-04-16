@@ -1,8 +1,12 @@
-var mongo = require('mongodb');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/mydb";
+var insertCollection = require('./Interns');
+var findCollection = require('./findInterns')
+var updateCollections = require('./updateInterns');
+var url = "mongodb://localhost:27017/";
+
 MongoClient.connect(url, function(err, db) {
- if (err) throw err;
- console.log("Database created by Okem");
- db.close();
+  if (err) throw err;
+  insertCollection(db);
+  findCollection(db);
+  updateCollections(db);
 });
